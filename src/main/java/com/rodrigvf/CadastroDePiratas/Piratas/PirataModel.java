@@ -1,6 +1,6 @@
 package com.rodrigvf.CadastroDePiratas.Piratas;
 
-import com.rodrigvf.CadastroDePiratas.Ilhas.IlhasModel;
+import com.rodrigvf.CadastroDePiratas.Ilhas.IlhaModel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,17 +14,23 @@ public class PirataModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
 
     @Column(unique = true)
     private String email;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
+    @Column(name = "idade")
     private int idade;
 
     @ManyToOne
     @JoinColumn(name = "ilhas_id")
-    private IlhasModel ilhas;
+    private IlhaModel ilhas;
 
 }
