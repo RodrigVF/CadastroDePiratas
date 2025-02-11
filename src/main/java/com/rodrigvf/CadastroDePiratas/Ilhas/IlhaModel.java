@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class IlhasModel {
+public class IlhaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class IlhasModel {
     @OneToMany(mappedBy = "ilhas")
     private List<PirataModel> piratas;
 
-    public IlhasModel() {
+    public IlhaModel() {
     }
 
-    public IlhasModel(String nome, String regiao) {
+    public IlhaModel(String nome, String regiao) {
         this.nome = nome;
         this.regiao = regiao;
     }
