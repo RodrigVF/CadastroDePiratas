@@ -1,4 +1,4 @@
-package com.rodrigvf.CadastroDePiratas;
+package com.rodrigvf.CadastroDePiratas.Piratas;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,5 @@ public class PirataController {
     public String boasVindas() {
         return "Bem vindo(a) à API de cadastro Pirata";
     }
-
-
 
 }

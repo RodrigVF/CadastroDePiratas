@@ -1,5 +1,6 @@
-package com.rodrigvf.CadastroDePiratas;
+package com.rodrigvf.CadastroDePiratas.Piratas;
 
+import com.rodrigvf.CadastroDePiratas.Ilhas.IlhasModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +10,16 @@ public class PirataModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
+
+    @ManyToOne
+    @JoinColumn(name = "ilhas_id")
+    private IlhasModel ilhas;
 
     public PirataModel() {
     }
