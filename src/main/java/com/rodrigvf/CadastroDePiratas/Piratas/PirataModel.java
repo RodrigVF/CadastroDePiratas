@@ -2,9 +2,14 @@ package com.rodrigvf.CadastroDePiratas.Piratas;
 
 import com.rodrigvf.CadastroDePiratas.Ilhas.IlhasModel;
 import jakarta.persistence.*;
+import lombok.*;
+
 
 @Entity
 @Table(name = "tb_cadastro")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PirataModel {
 
     @Id
@@ -20,38 +25,5 @@ public class PirataModel {
     @ManyToOne
     @JoinColumn(name = "ilhas_id")
     private IlhasModel ilhas;
-
-    public PirataModel() {
-    }
-
-    public PirataModel(String nome, String email, int idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
 
 }
