@@ -3,7 +3,7 @@ package com.rodrigvf.CadastroDePiratas.Ilhas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("ilhas")
+@RequestMapping("/ilhas")
 public class IlhaController {
 
     @GetMapping("/listar")

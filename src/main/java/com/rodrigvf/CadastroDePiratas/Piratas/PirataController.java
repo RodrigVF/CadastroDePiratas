@@ -3,7 +3,7 @@ package com.rodrigvf.CadastroDePiratas.Piratas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/piratas")
 public class PirataController {
 
     @GetMapping("/boas-vindas")
@@ -18,13 +18,13 @@ public class PirataController {
     }
 
     // Mostrar todos os piratas (READ)
-    @GetMapping("/all")
+    @GetMapping("/listar")
     public String mostrarTodosPiratas() {
-        return "Mostrar pirata!";
+        return "Listar todos os piratas!";
     }
 
     // Procurar Pirata por ID (READ)
-    @GetMapping("/allID")
+    @GetMapping("/listarID")
     public String mostrarPirataId() {
         return "Mostrar pirata por ID!";
     }
