@@ -32,9 +32,9 @@ public class PirataController {
     }
 
     // Procurar Pirata por ID (READ)
-    @GetMapping("/listarID")
-    public String mostrarPirataId() {
-        return "Mostrar pirata por ID!";
+    @GetMapping("/listar/{id}")
+    public PirataModel buscarPirataPorId(@PathVariable Long id) {
+        return pirataService.buscarPirataPorId(id);
     }
 
     // Alterar dados dos piratas (UPDATE
