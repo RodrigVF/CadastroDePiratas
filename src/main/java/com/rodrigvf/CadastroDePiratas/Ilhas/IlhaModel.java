@@ -1,5 +1,6 @@
 package com.rodrigvf.CadastroDePiratas.Ilhas;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rodrigvf.CadastroDePiratas.Piratas.PirataModel;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,7 @@ public class IlhaModel {
     private String regiao;
 
     @OneToMany(mappedBy = "ilhas")
+    @JsonIgnore
     private List<PirataModel> piratas;
 
 }
