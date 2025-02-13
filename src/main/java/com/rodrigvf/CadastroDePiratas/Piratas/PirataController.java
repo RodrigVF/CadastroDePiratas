@@ -2,9 +2,17 @@ package com.rodrigvf.CadastroDePiratas.Piratas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/piratas")
 public class PirataController {
+
+    private PirataService pirataService;
+
+    public PirataController(PirataService pirataService) {
+        this.pirataService = pirataService;
+    }
 
     @GetMapping("/boas-vindas")
     public String boasVindas() {
@@ -19,8 +27,8 @@ public class PirataController {
 
     // Mostrar todos os piratas (READ)
     @GetMapping("/listar")
-    public String mostrarTodosPiratas() {
-        return "Listar todos os piratas!";
+    public List<PirataModel> listarPiratas() {
+        return pirataService.listarPiratas();
     }
 
     // Procurar Pirata por ID (READ)
