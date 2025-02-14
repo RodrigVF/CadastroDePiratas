@@ -31,4 +31,12 @@ public class PirataService {
         pirataRepository.deleteById(id);
     }
 
+    public PirataModel alterarPirata(Long id, PirataModel pirataAtualizado) {
+        if (pirataRepository.existsById(id)) {
+            pirataAtualizado.setId(id);
+            return pirataRepository.save(pirataAtualizado);
+        }
+        return null;
+    }
+
 }

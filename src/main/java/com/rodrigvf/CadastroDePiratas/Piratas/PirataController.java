@@ -38,9 +38,9 @@ public class PirataController {
     }
 
     // Alterar dados dos piratas (UPDATE
-    @PutMapping("/alterarID")
-    public String alterarPirataId() {
-        return "Pirata atualizado com sucesso!";
+    @PutMapping("/alterar/{id}")
+    public PirataModel alterarPirata(@PathVariable Long id, @RequestBody PirataModel pirataAtualizado) {
+        return pirataService.alterarPirata(id, pirataAtualizado);
     }
 
     // Deletar Pirata (DELETE)
