@@ -27,19 +27,19 @@ public class PirataController {
 
     // Mostrar todos os piratas (READ)
     @GetMapping("/listar")
-    public List<PirataModel> listarPiratas() {
+    public List<PirataDTO> listarPiratas() {
         return pirataService.listarPiratas();
     }
 
     // Procurar Pirata por ID (READ)
     @GetMapping("/listar/{id}")
-    public PirataModel buscarPirataPorId(@PathVariable Long id) {
+    public PirataDTO buscarPirataPorId(@PathVariable Long id) {
         return pirataService.buscarPirataPorId(id);
     }
 
     // Alterar dados dos piratas (UPDATE
     @PutMapping("/alterar/{id}")
-    public PirataModel alterarPirata(@PathVariable Long id, @RequestBody PirataModel pirataAtualizado) {
+    public PirataDTO alterarPirata(@PathVariable Long id, @RequestBody PirataDTO pirataAtualizado) {
         return pirataService.alterarPirata(id, pirataAtualizado);
     }
 
