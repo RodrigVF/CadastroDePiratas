@@ -23,5 +23,8 @@ public class PirataService {
         return pirataPorId.orElse(null);
     }
 
+    public PirataModel criarPirata(PirataModel pirata) {
+        return pirataRepository.save(pirata);
+    }
 
 }

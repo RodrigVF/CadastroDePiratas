@@ -21,8 +21,8 @@ public class PirataController {
 
     // Adicionar (CREATE)
     @PostMapping("/criar")
-    public String criarPirata() {
-        return "Pirata criado com sucesso!";
+    public PirataModel criarPirata(@RequestBody PirataModel pirata) {
+        return pirataService.criarPirata(pirata);
     }
 
     // Mostrar todos os piratas (READ)
