@@ -29,6 +29,9 @@ public class PirataModel {
     @Column(name = "idade")
     private int idade;
 
+    @Column (name = "recompensa")
+    private double recompensa;
+
     @ManyToOne
     @JoinColumn(name = "ilhas_id")
     private IlhaModel ilhas;
