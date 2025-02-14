@@ -21,7 +21,7 @@ public class PirataController {
 
     // Adicionar (CREATE)
     @PostMapping("/criar")
-    public PirataModel criarPirata(@RequestBody PirataModel pirata) {
+    public PirataDTO criarPirata(@RequestBody PirataDTO pirata) {
         return pirataService.criarPirata(pirata);
     }
 

@@ -9,9 +9,11 @@ import java.util.Optional;
 public class PirataService {
 
     private PirataRepository pirataRepository;
+    private PirataMapper pirataMapper;
 
-    public PirataService(PirataRepository pirataRepository) {
+    public PirataService(PirataRepository pirataRepository, PirataMapper pirataMapper) {
         this.pirataRepository = pirataRepository;
+        this.pirataMapper = pirataMapper;
     }
 
     public List<PirataModel> listarPiratas() {
@@ -23,8 +25,10 @@ public class PirataService {
         return pirataPorId.orElse(null);
     }
 
-    public PirataModel criarPirata(PirataModel pirata) {
-        return pirataRepository.save(pirata);
+    public PirataDTO criarPirata(PirataDTO pirataDTO) {
+        PirataModel pirata = pirataMapper.map(pirataDTO);
+        pirata = pirataRepository.save(pirata);
+        return pirataMapper.map(pirata);
     }
 
     public void deletarPirataPorId(Long id) {
