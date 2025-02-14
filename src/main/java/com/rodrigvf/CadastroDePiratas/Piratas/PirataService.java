@@ -27,4 +27,8 @@ public class PirataService {
         return pirataRepository.save(pirata);
     }
 
+    public void deletarPirataPorId(Long id) {
+        pirataRepository.deleteById(id);
+    }
+
 }

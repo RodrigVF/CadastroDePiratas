@@ -44,8 +44,8 @@ public class PirataController {
     }
 
     // Deletar Pirata (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarPirataId() {
-        return "Pirata deletado com sucesso!";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarPirataPorId(@PathVariable Long id) {
+        pirataService.deletarPirataPorId(id);
     }
 }
