@@ -1,5 +1,7 @@
 package com.rodrigvf.CadastroDePiratas.Piratas;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,31 +23,64 @@ public class PirataController {
 
     // Adicionar (CREATE)
     @PostMapping("/criar")
-    public PirataDTO criarPirata(@RequestBody PirataDTO pirata) {
-        return pirataService.criarPirata(pirata);
+    public ResponseEntity<String> criarPirata(@RequestBody PirataDTO pirata) {
+
+        PirataDTO novoPirata = pirataService.criarPirata(pirata);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body("Pirata criado com sucesso: " + novoPirata.getNome() + " (ID: " + novoPirata.getId() + ")");
+
     }
 
     // Mostrar todos os piratas (READ)
     @GetMapping("/listar")
-    public List<PirataDTO> listarPiratas() {
-        return pirataService.listarPiratas();
+    public ResponseEntity<List<PirataDTO>> listarPiratas() {
+
+        List<PirataDTO> piratas =  pirataService.listarPiratas();
+        return ResponseEntity.ok(piratas);
+
     }
 
     // Procurar Pirata por ID (READ)
     @GetMapping("/listar/{id}")
-    public PirataDTO buscarPirataPorId(@PathVariable Long id) {
-        return pirataService.buscarPirataPorId(id);
+    public ResponseEntity<?> buscarPirataPorId(@PathVariable Long id) {
+
+        PirataDTO pirata = pirataService.buscarPirataPorId(id);
+
+        if ( pirata != null) {
+            return ResponseEntity.ok(pirata);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Pirata de ID: " + id + " não encontrado!");
+        }
+
     }
 
-    // Alterar dados dos piratas (UPDATE
+    // Alterar dados dos piratas (UPDATE)
     @PutMapping("/alterar/{id}")
-    public PirataDTO alterarPirata(@PathVariable Long id, @RequestBody PirataDTO pirataAtualizado) {
-        return pirataService.alterarPirata(id, pirataAtualizado);
+    public ResponseEntity<?> alterarPirata(@PathVariable Long id, @RequestBody PirataDTO pirataAtualizado) {
+
+        PirataDTO pirata = pirataService.alterarPirata(id, pirataAtualizado);
+
+        if (pirata != null) {
+            return ResponseEntity.ok(pirata);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Pirata de ID: " + id + " não encontrado!");
+        }
+
     }
 
     // Deletar Pirata (DELETE)
     @DeleteMapping("/deletar/{id}")
-    public void deletarPirataPorId(@PathVariable Long id) {
-        pirataService.deletarPirataPorId(id);
+    public ResponseEntity<String> deletarPirataPorId(@PathVariable Long id) {
+
+        if (pirataService.buscarPirataPorId(id) != null) {
+            pirataService.deletarPirataPorId(id);
+            return ResponseEntity.ok("Pirata de ID: " + id + " deletado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Pirata de ID: " + id + " não encontrado!");
+        }
+
     }
 }
