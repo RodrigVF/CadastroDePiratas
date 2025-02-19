@@ -10,6 +10,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "ilhas")
 public class PirataModel {
 
     @Id
