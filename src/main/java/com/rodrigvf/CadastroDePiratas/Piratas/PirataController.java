@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/piratas")
 public class PirataController {
 
-    private PirataService pirataService;
+    private final PirataService pirataService;
 
     public PirataController(PirataService pirataService) {
         this.pirataService = pirataService;

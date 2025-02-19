@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class PirataService {
 
-    private PirataRepository pirataRepository;
-    private PirataMapper pirataMapper;
+    private final PirataRepository pirataRepository;
+    private final PirataMapper pirataMapper;
 
     public PirataService(PirataRepository pirataRepository, PirataMapper pirataMapper) {
         this.pirataRepository = pirataRepository;
