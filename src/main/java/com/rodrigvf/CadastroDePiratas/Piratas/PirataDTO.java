@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,7 @@ public class PirataDTO {
     private String email;
     private String imgUrl;
     private int idade;
-    private double recompensa;
+    private BigDecimal recompensa;
     private IlhaModel ilhas;
 
 }

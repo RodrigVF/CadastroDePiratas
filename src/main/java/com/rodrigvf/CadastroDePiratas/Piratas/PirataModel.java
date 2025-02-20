@@ -4,6 +4,8 @@ import com.rodrigvf.CadastroDePiratas.Ilhas.IlhaModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -30,8 +32,8 @@ public class PirataModel {
     @Column(name = "idade")
     private int idade;
 
-    @Column (name = "recompensa")
-    private double recompensa;
+    @Column(name = "recompensa", precision = 15, scale = 2)
+    private BigDecimal recompensa;
 
     @ManyToOne
     @JoinColumn(name = "ilhas_id")

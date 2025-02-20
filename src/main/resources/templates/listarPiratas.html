@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de Piratas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin: 0 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        td a {
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            table, th, td {
+                display: block;
+            }
+
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            td {
+                position: relative;
+                padding-left: 50%;
+                text-align: left;
+            }
+
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 15px;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1> Lista de Piratas </h1>
+<a class="btn-adicionar" th:href="@{/piratas/ui/adicionar}"  style="background-color: #198754;">Adicionar Novo Pirata</a>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Recompensa</th>
+        <th>Ilha</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pirata : ${piratas}">
+        <td th:text="${pirata.id}" data-label="Id"></td>
+        <td><img th:src="${pirata.imgUrl}" width="100" height="100"></td>
+        <td th:text="${pirata.nome}" data-label="Nome"></td>
+        <td th:text="${pirata.idade}" data-label="Idade"></td>
+        <td th:text="${pirata.email}" data-label="Email"></td>
+        <td th:text="${pirata.recompensa}" data-label="Recompensa"></td>
+        <td data-label="Ilha">
+                    <span th:if="${pirata.ilhas}">
+                        Nome: <span th:text="${pirata.ilhas.nome}"></span>,
+                        Região: <span th:text="${pirata.ilhas.regiao}"></span>
+                    </span>
+            <span th:if="${pirata.ilhas} == null">Pirata não está em uma ilha</span>
+        </td>
+        <td data-label="Ações">
+            <a th:href="@{/piratas/ui/listar/{id}(id=${pirata.id})}">Ver detalhes</a>
+            <a th:href="@{/piratas/ui/#/{id}(id=${pirata.id})}" style="background-color: #ffc107; color:black;">Alterar</a>
+            <a th:href="@{/piratas/ui/deletar/{id}(id=${pirata.id})}" style="background-color: #dc3545;">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
